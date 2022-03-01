@@ -3,8 +3,7 @@
 @section('body')
     <div class="card border">
         <div class="card-body">
-            <h5 class="card-title">Reach Back Users: {{ $rbu->count() }}
-            </h5>
+            <h5 class="card-title">Reach Back Users: {{ $rbu->count() }}</h5>
             <table class="table table-hover" id="tabelaProdutos">
                 <thead>
                     <tr>

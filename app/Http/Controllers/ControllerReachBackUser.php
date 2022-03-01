@@ -31,7 +31,7 @@ class ControllerReachBackUser extends Controller
      */
     public function create()
     {
-        //
+        return view("rbu.newRbu");
     }
 
     /**
