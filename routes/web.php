@@ -25,3 +25,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/rbu', [ControllerReachBackUser::class, 'index']);
 Route::get('/rbu/new', [ControllerReachBackUser::class, 'create']);
 Route::post('/rbu', [ControllerReachBackUser::class, 'store']);
+Route::get('/rbu/delete/{id}', [ControllerReachBackUser::class, 'destroy']);

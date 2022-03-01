@@ -98,6 +98,11 @@ class ControllerReachBackUser extends Controller
      */
     public function destroy($id)
     {
-        //
+        $rbu = ReachBackUsers::find($id);
+
+        if (isset($rbu)) {
+            $rbu->delete();
+        }
+        return redirect("/rbu");
     }
 }

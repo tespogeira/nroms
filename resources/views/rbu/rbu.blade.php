@@ -45,9 +45,9 @@
                                 <td>{{ $reachbu->sa_signed }}</td>
                                 <td>{{ $reachbu->email }}</td>
                                 <td>
-                                    <a href="/rbu/edit"><i class="material-icons"
+                                    <a href="/rbu/edit/{{ $reachbu->id }}"><i class="material-icons"
                                             style="font-size:18px;color:black">edit</i></a>
-                                    <a href="/rbu/destroy"><i class="material-icons"
+                                    <a href="/rbu/delete/{{ $reachbu->id }}"><i class="material-icons"
                                             style="font-size:18px;color:red">delete</i></a>
                                 </td>
                             </tr>
@@ -55,7 +55,7 @@
                     </tbody>
                 </table>
             </div>
-        @elseif ($rbu->count == 0)
+        @elseif ($rbu->count() == 0)
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-6">
