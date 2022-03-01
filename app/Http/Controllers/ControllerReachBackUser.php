@@ -42,7 +42,20 @@ class ControllerReachBackUser extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request);
+        $rbu = new ReachBackUsers();
+        $rbu->fname = $request->input('fname');
+        $rbu->lname = $request->input('lname');
+        $rbu->acard = $request->input('acard');
+        $rbu->acard_validity = $request->input('acard_validity');
+        $rbu->network = $request->input('network');
+        $rbu->sa_signed = $request->input('sa_signed');
+        $rbu->email = $request->input('email');
+
+        $rbu->save();
+
+        $rbu = ReachBackUsers::all();
+        return view("rbu.rbu", compact("rbu"));
     }
 
     /**

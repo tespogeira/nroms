@@ -24,3 +24,4 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/rbu', [ControllerReachBackUser::class, 'index']);
 Route::get('/rbu/new', [ControllerReachBackUser::class, 'create']);
+Route::post('/rbu', [ControllerReachBackUser::class, 'store']);

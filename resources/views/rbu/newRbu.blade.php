@@ -4,6 +4,7 @@
     <div class="card border">
         <div class="card-body">
             <form action="/rbu" method="POST">
+                @csrf
                 <div class="form-group">
                     <label for="fname">First Name</label>
                     <input type="text" class="form-control form-control-sm" name="fname" id="fname" placeholder="FirstName">
@@ -18,7 +19,7 @@
                         placeholder="NCI-0000000-00">
                 </div>
                 <div class="form-group">
-                    <label for="acard_validity">Amis Card Validity</label>
+                    <label for="    ">Amis Card Validity</label>
                     <input type="date" class="form-control form-control-sm" name="acard_validity" id="acard_validity"
                         placeholder="2000-01-01">
                 </div>
