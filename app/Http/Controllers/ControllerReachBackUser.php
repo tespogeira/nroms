@@ -53,9 +53,7 @@ class ControllerReachBackUser extends Controller
         $rbu->email = $request->input('email');
 
         $rbu->save();
-
-        $rbu = ReachBackUsers::all();
-        return view("rbu.rbu", compact("rbu"));
+        return redirect("/rbu");
     }
 
     /**

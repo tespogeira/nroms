@@ -3,6 +3,7 @@
 
 <head>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>App RBU</title>
     @csrf
     <style>
@@ -31,6 +32,13 @@
             @endif
         </main>
     </div>
+    <!-- Footer -->
+    <footer class="page-footer font-small blue">
+        <div class="footer-copyright text-center py-1">©{{ Carbon\Carbon::now()->year }}
+            <a href="/"> iNPKI</a> v0.1
+        </div>
+    </footer>
+    <!-- Footer -->
     <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
 </body>
 

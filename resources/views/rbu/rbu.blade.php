@@ -37,7 +37,11 @@
                             <td>{{ $reachbu->network }}</td>
                             <td>{{ $reachbu->sa_signed }}</td>
                             <td>{{ $reachbu->email }}</td>
-                            <td>[+]</td>
+                            <td>
+                                <a href="/rbu/edit"><i class="material-icons" style="font-size:18px;color:black">edit</i></a>
+                                <a href="/rbu/destroy"><i class="material-icons"
+                                        style="font-size:18px;color:red">delete</i></a>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
