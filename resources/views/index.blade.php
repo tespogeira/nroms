@@ -8,7 +8,7 @@
                 <p class="card-text">##############</p>
             </div>
             <div class="card-footer">
-                <a href="/poc" class="btn btn-primary">POCs List</a>
+                <a href="/poc" class="btn btn-primary btn-sm btn-sm">POCs List</a>
             </div>
         </div>
         <div class="card">
@@ -18,8 +18,8 @@
                     can find a list of the users that subscribe the agreements</p>
             </div>
             <div class="card-footer">
-                <a href="/rbu" class="btn btn-primary">RBUs List</a>
-                <a href="/rbu/new" class="btn btn-primary">New RBUs List</a>
+                <a href="/rbu" class="btn btn-primary btn-sm">RBUs List</a>
+                <a href="/rbu/new" class="btn btn-primary btn-sm">New RBUs List</a>
             </div>
         </div>
         <div class="card">
@@ -29,7 +29,7 @@
                     <p class="card-text">##############</p>
                 </div>
                 <div class="card-footer">
-                    <a href="/tickets" class="btn btn-primary">Tickets</a>
+                    <a href="/tickets" class="btn btn-primary btn-sm">Tickets</a>
                 </div>
             </div>
         </div>
