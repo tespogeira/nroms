@@ -15,6 +15,7 @@
         .navbar {
             margin: 5px;
         }
+        }
 
     </style>
 </head>
