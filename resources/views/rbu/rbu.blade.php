@@ -20,7 +20,7 @@
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Amis Card</th>
-                            <th>Amis Card Validity</th>
+                            <th>ACard Validity</th>
                             <th>Classification</th>
                             <th>SA Signed</th>
                             <th>Email</th>
@@ -34,11 +34,16 @@
                                 <td>{{ $reachbu->fname }}</td>
                                 <td>{{ $reachbu->lname }}</td>
                                 <td>{{ $reachbu->acard }}</td>
-                                <td> {{ $reachbu->acard_validity }}
+                                <td>
                                     @if ($reachbu->acard_validity > \Carbon\Carbon::now())
-                                        <i class="material-icons" style="font-size:18px;color:green">verified</i>
+                                        <h6>
+                                            <span
+                                                class="badge rounded-pill bg-success">{{ $reachbu->acard_validity }}</span>
+                                        </h6>
                                     @else
-                                        <i class="material-icons" style="font-size:18px;color:red">warning</i>
+                                        <h6>
+                                            <span class="badge bg-danger">{{ $reachbu->acard_validity }}</span>
+                                        </h6>
                                     @endif
                                 </td>
                                 <td>{{ $reachbu->network }}</td>

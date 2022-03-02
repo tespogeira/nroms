@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light navbar-dark bg-dark shadow-sm rounded">
     <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}"><img src="http://127.0.0.1:8000/img/nato.png" width="90"
+        <a class="navbar-brand" href="{{ url('/home') }}"><img src="http://127.0.0.1:8000/img/nato.png" width="90"
                 alt="NATO iNPKI Restricted Managment System"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
             aria-controls="navbar" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -40,13 +40,13 @@
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }}
+                            Welcome, {{ Auth::user()->name }}
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <a href="/user/edit" class="dropdown-item">{{ __('Settings') }}</a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                            document.getElementById('logout-form').submit();">
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
 
