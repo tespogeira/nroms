@@ -23,7 +23,7 @@ class CreateReachBackUsersTable extends Migration
             $table->string('network');
             $table->date('sa_signed');
             $table->string('sa_signed_local')->nullable();
-            $table->string('email')->nullable();
+            $table->string('email')->nullable()->unique();
             $table->timestamps();
         });
     }

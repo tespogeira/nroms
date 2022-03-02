@@ -18,7 +18,7 @@
                     can find a list of the users that subscribe the agreements</p>
             </div>
             <div class="card-footer">
-                <a href="/rbu/new" class="btn btn-primary btn-sm">New RBUs List</a>
+                <a href="/rbu/new" class="btn btn-primary btn-sm">Add RBU</a>
             </div>
         </div>
         <div class="card">
