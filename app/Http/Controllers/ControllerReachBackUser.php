@@ -103,6 +103,7 @@ class ControllerReachBackUser extends Controller
      */
     public function update(Request $request, $id)
     {
+        info($request);
         $request->validate([
             'fname' => 'required|string',
             'lname' => 'required|string',
@@ -110,7 +111,7 @@ class ControllerReachBackUser extends Controller
             'acard_validity' => 'required|string',
             'network' => 'required|string',
             'sa_signed' => 'required|string',
-            'email' => 'required|email|unique:reach_back_users'
+            'email' => 'required|email'
         ]);
 
         $rbu = ReachBackUsers::find($id);
