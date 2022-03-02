@@ -1,0 +1,25 @@
+###Create p[roject]
+> composer create-project laravel/laravel nroms
+
+###Auth componente with Bootstrap
+> composer require laravel/ui
+> php artisan ui bootstrap
+> npm install
+> npm run dev (x2)
+
+###Start Web Server
+> php artisan serve
+
+###List Routes
+> php artisan route:list
+
+###GIT
+> git init
+> git add .
+> git commit -a -m "message"
+> git push https://github.com/tespogeira/nroms.git
+
+> git remote add origin https://github.com/tespogeira/nroms.git
+> git push -u origin master
+
+> git remote add origin https://github.com/tespogeira/nroms.git
