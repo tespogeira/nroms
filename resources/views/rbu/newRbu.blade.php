@@ -38,8 +38,8 @@
                     <input type="email" class="form-control form-control-sm" name="email" id="email"
                         placeholder="fname.lastname@ncia.nato.int">
                 </div>
-                <button type="submit" class="btn btn-primary btn-sm">Add</button>
-                <button type="cancel" class="btn btn-secondary btn-sm">Cancel</button>
+                <button type="submit" class="btn btn-primary btn-sm p-3 mt-2 ">Add</button>
+                <button type="button" class="btn btn-secondary btn-sm p-3 mt-2">Cancel</button>
             </form>
         </div>
     </div>
