@@ -42,6 +42,15 @@ class ControllerReachBackUser extends Controller
      */
     public function store(Request $request)
     {
+        //Validate
+        $request->validate([
+            'fname' => 'required|string',
+            'lname' => 'required|string',
+            'acard' => 'required|string',
+            'acard_validity' => 'required|string',
+            'network' => 'required|string',
+            'email' => 'required|email|unique:reach_back_users'
+        ]);
         //dd($request);
         $rbu = new ReachBackUsers();
         $rbu->fname = $request->input('fname');

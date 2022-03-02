@@ -40,7 +40,7 @@
                     <input type="email" class="form-control form-control-sm" name="email" id="email"
                         value="{{ $rbu->email }}">
                 </div>
-                <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                <button type="submit" class="btn btn-primary btn-sm p-3 mt-2">Update</button>
                 <!--<button type="cancel" class="btn btn-danger btn-sm">Delete</button>-->
             </form>
         </div>
