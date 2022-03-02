@@ -60,9 +60,9 @@
                                 </td>
                                 <td>{{ $reachbu->email }}</td>
                                 <td>
-                                    <a href="/rbu/edit/{{ $reachbu->id }}"><i class="material-icons"
+                                    <a href="/rbu/{{ $reachbu->id }}/edit"><i class="material-icons"
                                             style="font-size:18px;color:black">edit</i></a>
-                                    <a href="/rbu/delete/{{ $reachbu->id }}"><i class="material-icons"
+                                    <a href="/rbu/{{ $reachbu->id }}/delete"><i class="material-icons"
                                             style="font-size:18px;color:red">delete</i></a>
                                 </td>
                             </tr>

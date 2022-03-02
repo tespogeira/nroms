@@ -41,7 +41,7 @@
                         value="{{ $rbu->email }}">
                 </div>
                 <button type="submit" class="btn btn-primary btn-sm">Update</button>
-                <button type="cancel" class="btn btn-danger btn-sm">Delete</button>
+                <!--<button type="cancel" class="btn btn-danger btn-sm">Delete</button>-->
             </form>
         </div>
     </div>

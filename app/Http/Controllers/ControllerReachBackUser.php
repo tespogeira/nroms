@@ -94,6 +94,7 @@ class ControllerReachBackUser extends Controller
     public function update(Request $request, $id)
     {
         $rbu = ReachBackUsers::find($id);
+        //dd($request);
         if (isset($rbu)) {
             $rbu->fname = $request->input('fname');
             $rbu->lname = $request->input('lname');
@@ -119,7 +120,7 @@ class ControllerReachBackUser extends Controller
     public function destroy($id)
     {
         $rbu = ReachBackUsers::find($id);
-
+        //dd($id);
         if (isset($rbu)) {
             $rbu->delete();
         }
