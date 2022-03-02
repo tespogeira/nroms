@@ -53,6 +53,7 @@ class ControllerReachBackUser extends Controller
         $rbu->email = $request->input('email');
 
         $rbu->save();
+        //Comment
         return redirect("/rbu");
     }
 
