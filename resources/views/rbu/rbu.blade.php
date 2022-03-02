@@ -10,7 +10,7 @@
                     </div>
                     <div class="col-sm-4"></div>
                     <div class="col-sm-2">
-                        <a href="/rbu/new" class="btn btn-primary btn-sm">New RBUs List</a>
+                        <a href="/rbu/new" class="btn btn-primary btn-sm">New RBUs</a>
                     </div>
                 </div>
                 <table class="table table-hover" id="tabelaProdutos">
@@ -20,7 +20,7 @@
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Amis Card</th>
-                            <th>Amis Card Validity</th>
+                            <th>ACard Validity</th>
                             <th>Classification</th>
                             <th>SA Signed</th>
                             <th>Email</th>
@@ -34,15 +34,30 @@
                                 <td>{{ $reachbu->fname }}</td>
                                 <td>{{ $reachbu->lname }}</td>
                                 <td>{{ $reachbu->acard }}</td>
-                                <td> {{ $reachbu->acard_validity }}
+                                <td>
                                     @if ($reachbu->acard_validity > \Carbon\Carbon::now())
-                                        <i class="material-icons" style="font-size:18px;color:green">verified</i>
+                                        <h6>
+                                            <span
+                                                class="badge rounded-pill bg-success">{{ $reachbu->acard_validity }}</span>
+                                        </h6>
                                     @else
-                                        <i class="material-icons" style="font-size:18px;color:red">warning</i>
+                                        <h6>
+                                            <span class="badge bg-danger">{{ $reachbu->acard_validity }}</span>
+                                        </h6>
                                     @endif
                                 </td>
                                 <td>{{ $reachbu->network }}</td>
-                                <td>{{ $reachbu->sa_signed }}</td>
+                                <td>
+                                    @if (date('Y-m-d', strtotime('+3 year', strtotime($reachbu->sa_signed))) > \Carbon\Carbon::now())
+                                        <h6>
+                                            <span class="badge rounded-pill bg-success">{{ $reachbu->sa_signed }}</span>
+                                        </h6>
+                                    @else
+                                        <h6>
+                                            <span class="badge rounded-pill bg-danger">{{ $reachbu->sa_signed }}</span>
+                                        </h6>
+                                    @endif
+                                </td>
                                 <td>{{ $reachbu->email }}</td>
                                 <td>
                                     <a href="/rbu/edit/{{ $reachbu->id }}"><i class="material-icons"
@@ -63,7 +78,7 @@
                     </div>
                     <div class="col-sm-4"></div>
                     <div class="col-sm-2">
-                        <a href="/rbu/new" class="btn btn-primary btn-sm">New RBUs List</a>
+                        <a href="/rbu/new" class="btn btn-primary btn-sm">New RBU</a>
                     </div>
                 </div>
             </div>
