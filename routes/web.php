@@ -25,4 +25,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/rbu', [ControllerReachBackUser::class, 'index']);
 Route::get('/rbu/new', [ControllerReachBackUser::class, 'create']);
 Route::post('/rbu', [ControllerReachBackUser::class, 'store']);
+Route::post('/rbu/{id}', [ControllerReachBackUser::class, 'update']);
 Route::get('/rbu/delete/{id}', [ControllerReachBackUser::class, 'destroy']);
+Route::get('/rbu/edit/{id}', [ControllerReachBackUser::class, 'edit']);

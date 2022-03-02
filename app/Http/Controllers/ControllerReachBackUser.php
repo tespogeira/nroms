@@ -53,6 +53,7 @@ class ControllerReachBackUser extends Controller
         $rbu->email = $request->input('email');
 
         $rbu->save();
+        //Comment
         return redirect("/rbu");
     }
 
@@ -75,7 +76,12 @@ class ControllerReachBackUser extends Controller
      */
     public function edit($id)
     {
-        //
+        $rbu = ReachBackUsers::find($id);
+        if (isset($rbu)) {
+            return view('rbu.editRbu', compact('rbu'));
+        } else {
+            return redirect('/rbu');
+        }
     }
 
     /**
@@ -87,7 +93,21 @@ class ControllerReachBackUser extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rbu = ReachBackUsers::find($id);
+        if (isset($rbu)) {
+            $rbu->fname = $request->input('fname');
+            $rbu->lname = $request->input('lname');
+            $rbu->acard = $request->input('acard');
+            $rbu->acard_validity = $request->input('acard_validity');
+            $rbu->network = $request->input('network');
+            $rbu->sa_signed = $request->input('sa_signed');
+            $rbu->email = $request->input('email');
+            $rbu->save();
+
+            return redirect('/rbu');
+        } else {
+            return redirect('/rbu');
+        }
     }
 
     /**
