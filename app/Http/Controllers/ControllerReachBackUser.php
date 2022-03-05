@@ -57,14 +57,25 @@ class ControllerReachBackUser extends Controller
         //dd($request);
 
         $this->checkDirectory($request->input('acard'));
-        $path_sa = $request->file('sa_signed_local')->store($request->input('acard'), 'rbu');
-        $path_acard = $request->file('acard_local')->store($request->input('acard_local'), 'rbu');
+        info($request->file('sa_signed_local'));
+        info($request->file('acard_local'));
+
+        if ($request->file('sa_signed_local')) {
+            $path_sa = $request->file('sa_signed_local')->store($request->input('acard'), 'rbu');
+        } else {
+            $path_sa = "";
+        }
+        if ($request->file('acard_local')) {
+            $path_acard = $request->file('acard_local')->store($request->input('acard_local'), 'rbu');
+        } else {
+            $path_acard = "";
+        }
 
         $rbu = new ReachBackUsers();
         $rbu->fname = $request->input('fname');
         $rbu->lname = $request->input('lname');
         $rbu->acard = $request->input('acard');
-        $rbu->acard = $path_acard;
+        $rbu->acard_local = $path_acard;
         $rbu->acard_validity = $request->input('acard_validity');
         $rbu->network = $request->input('network');
         $rbu->sa_signed = $request->input('sa_signed');
@@ -159,6 +170,18 @@ class ControllerReachBackUser extends Controller
             $rbu->delete();
         }
         return redirect("/rbu");
+    }
+
+    /**
+     *
+     */
+    public function download($id)
+    {
+        $rbu = ReachBackUsers::find($id);
+        //dd($rbu);
+        if (isset($rbu)) {
+            return Storage::disk('rbu')->download($rbu->sa_signed_local)->name('file');
+        }
     }
 
 
