@@ -31,7 +31,7 @@ Route::controller(ControllerReachBackUser::class)->group(function () {
     Route::get('/rbu/{id}/edit', 'edit');
     Route::post('/rbu', 'store');
     Route::post('/rbu/{id}', 'update');
-    Route::get('/rbu/{id}/download', 'download_sa');
-});
 
-//Route::resource('rbu', ControllerReachBackUser::class);
+    Route::get('/rbu/{id}/sadownload', 'download');
+    Route::get('/rbu/{id}/sadelete', 'deleteFile');
+});

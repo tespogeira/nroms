@@ -35,42 +35,32 @@
                                 <td>{{ $reachbu->lname }}</td>
                                 <td>{{ $reachbu->acard }}</td>
                                 <td>
-                                    @if ($reachbu->acard_validity > \Carbon\Carbon::now())
-                                        <form action="/rbu/{{ $reachbu->id }}/download/_acard" method="GET">
-                                            @csrf
-                                            <h6>
-                                                <span
-                                                    class="badge rounded-pill bg-success">{{ $reachbu->acard_validity }}</span>
+
+                                    <form action="/rbu/{{ $reachbu->id }}/download" method="GET">
+                                        @csrf
+                                        <h6>
+                                            <span
+                                                class="badge rounded-pill
+                                                    @if ($reachbu->acard_validity > \Carbon\Carbon::now()) bg-success @else bg-danger @endif
+                                                    ">{{ $reachbu->acard_validity }}</span>
+                                            @if ($reachbu->acard_local)
                                                 <i class="material-icons" style="font-size:18px;color:black">badge</i>
-                                            </h6>
-                                        @else
-                                            <h6>
-                                                <span class="badge bg-danger">{{ $reachbu->acard_validity }}</span>
-                                                <i class="material-icons" style="font-size:18px;color:black">badge</i>
-                                            </h6>
-                                        </form>
-                                    @endif
+                                            @endif
+                                        </h6>
                                 </td>
                                 <td>{{ $reachbu->network }}</td>
                                 <td>
-                                    @if (date('Y-m-d', strtotime('+3 year', strtotime($reachbu->sa_signed))) > \Carbon\Carbon::now())
-                                        <form action="/rbu/{{ $reachbu->id }}/download" method="GET">
-                                            <h6>
-                                                <span
-                                                    class="badge rounded-pill bg-success">{{ $reachbu->sa_signed }}</span>
-                                                <button type="submit" class="btn btn-xm"><i class="material-icons"
-                                                        style="font-size:18px;color:black">picture_as_pdf</i>
-                                                </button>
-                                            </h6>
-                                        @else
-                                            <h6>
-                                                <span
-                                                    class="badge rounded-pill bg-danger">{{ $reachbu->sa_signed }}</span>
-                                                <button type="submit"><i class="material-icons"
-                                                        style="font-size:18px;color:black">picture_as_pdf</i></button>
-                                            </h6>
-                                        </form>
-                                    @endif
+                                    <h6>
+                                        <span
+                                            class="badge rounded-pill
+                                                    @if (date('Y-m-d', strtotime('+3 year', strtotime($reachbu->sa_signed))) > \Carbon\Carbon::now()) bg-success
+                                                        @else bg-danger @endif
+                                                    ">{{ $reachbu->sa_signed }}</span>
+                                        @if ($reachbu->sa_signed_local)
+                                            <a href="/rbu/{{ $reachbu->id }}/sadownload"><i class="material-icons"
+                                                    style="font-size:18px;color:black">picture_as_pdf</i></a>
+                                        @endif
+                                    </h6>
                                 </td>
                                 <td>{{ $reachbu->email }}</td>
                                 <td>
@@ -98,5 +88,7 @@
             </div>
         @endif
     </div>
-    {{ var_dump($errors) }}
+    @error($errors)
+        {{ var_dump($errors) }}
+    @enderror
 @endsection

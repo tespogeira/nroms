@@ -57,25 +57,14 @@ class ControllerReachBackUser extends Controller
         //dd($request);
 
         $this->checkDirectory($request->input('acard'));
-        info($request->file('sa_signed_local'));
-        info($request->file('acard_local'));
-
-        if ($request->file('sa_signed_local')) {
-            $path_sa = $request->file('sa_signed_local')->store($request->input('acard'), 'rbu');
-        } else {
-            $path_sa = "";
-        }
-        if ($request->file('acard_local')) {
-            $path_acard = $request->file('acard_local')->store($request->input('acard_local'), 'rbu');
-        } else {
-            $path_acard = "";
-        }
+        $path_sa = $request->file('sa_signed_local')->store($request->input('acard'), 'rbu');
+        $path_acard = $request->file('acard_local')->store($request->input('acard_local'), 'rbu');
 
         $rbu = new ReachBackUsers();
         $rbu->fname = $request->input('fname');
         $rbu->lname = $request->input('lname');
         $rbu->acard = $request->input('acard');
-        $rbu->acard_local = $path_acard;
+        $rbu->acard = $path_acard;
         $rbu->acard_validity = $request->input('acard_validity');
         $rbu->network = $request->input('network');
         $rbu->sa_signed = $request->input('sa_signed');
@@ -175,25 +164,22 @@ class ControllerReachBackUser extends Controller
     /**
      *
      */
-    public function download($id)
+    public function download($id, Request $request)
     {
-
         $rbu = ReachBackUsers::find($id);
-        dd($rbu);
-
+        //dd($request);
         if (isset($rbu)) {
-            return Storage::disk('rbu')->download($rbu->sa_signed_local);
+            return Storage::disk('rbu')->download($rbu->sa_signed_local, "sa");
         }
     }
     /**
      *
-
-    public function download_acard($id)
+    public function downloadsa($id, Request $request)
     {
+        //dd($request);
         $rbu = ReachBackUsers::find($id);
-        //dd($rbu);
         if (isset($rbu)) {
-            return Storage::disk('rbu')->download($rbu->acard_local)->name('file');
+            return Storage::disk('rbu')->download($rbu->sa_signed_local);
         }
     }*/
 

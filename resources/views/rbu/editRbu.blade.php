@@ -46,6 +46,10 @@
                     @enderror
                 </div>
                 <div class="form-group">
+                    <label for="sa_signed_local">Subscriber Agreement - Only PDF</label>
+                    <input type="file" class=" form-control form-control-sm" name="sa_signed_local" id="sa_signed_local">
+                </div>
+                <div class="form-group">
                     <label for="network">Network</label>
                     <input type="text" class="form-control form-control-sm @error('network') is-invalid @enderror"
                         name="network" id="network" value="{{ $rbu->network }}">
@@ -65,6 +69,18 @@
                         </span>
                     @enderror
                 </div>
+                @if (!$rbu->sa_signed_local)
+                    <div class="form-group">
+                        <label for="sa_signed_local">Subscriber Agreement - Only PDF</label>
+                        <input type="file" class="form-control form-control-sm" name="sa_signed_local" id="sa_signed_local">
+                    </div>
+                @else
+                    <div class="form-group">
+                        <label for="sa_signed_local">Subscriber Agreement - Only PDF</label>
+                        <a href="/rbu/{{ $rbu->id }}/sadownload" class="btn btn-secondary btn-sm mt-2">Download</a>
+                        <a href="/rbu/{{ $rbu->id }}/sadelete" class="btn btn-danger btn-sm mt-2">Delete</a>
+                    </div>
+                @endif
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" class="form-control form-control-sm @error('email') is-invalid @enderror"
