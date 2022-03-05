@@ -6,7 +6,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h4 class="card-title">Reach Back Users: {{ $rbu->count() }}</h4>
+                        <h4 class="card-title">Reach Back Users (NCIRC): {{ $rbu->count() }}</h4>
                     </div>
                     <div class="col-sm-4"></div>
                     <div class="col-sm-2">
@@ -21,7 +21,7 @@
                             <th>Last Name</th>
                             <th>Amis Card</th>
                             <th>ACard Validity</th>
-                            <th>Classification</th>
+                            <th>Network</th>
                             <th>SA Signed</th>
                             <th>Email</th>
                             <th>Options</th>
@@ -84,4 +84,5 @@
             </div>
         @endif
     </div>
+    {{ var_dump($errors) }}
 @endsection

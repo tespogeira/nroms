@@ -3,7 +3,7 @@
 @section('body')
     <div class="card border">
         <div class="card-body">
-            <form action="/rbu" method="POST">
+            <form action="/rbu" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="fname">First Name</label>
@@ -71,6 +71,10 @@
                     @enderror
                 </div>
                 <div class="form-group">
+                    <label for="sa_signed_local">Subscriber Agreement - Only PDF</label>
+                    <input type="file" class=" form-control form-control-sm" name="sa_signed_local" id="sa_signed_local">
+                </div>
+                <div class="form-group">
                     <label for="email">Email</label>
                     <input id="email" type="email" class="form-control form-control-sm @error('email') is-invalid @enderror"
                         name="email" value="{{ old('email') }}" autocomplete="email" placeholder="john.doe@ncia.nato.int">
@@ -88,9 +92,9 @@
     <!-- @if ($errors->any())
     @foreach ($errors->all() as $error)
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                                                {{ $error }}
-                                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                                            </div>
+                                                                                                {{ $error }}
+                                                                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                                                            </div>
     @endforeach
     @endif-->
 @endsection
