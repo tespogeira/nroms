@@ -59,8 +59,7 @@
                         </span>
                     @enderror
                 </div>
-                <div class="
-                        form-group">
+                <div class="form-group">
                     <label for="sa_signed">Subscriber Agreement Signed</label>
                     <input type="date" class="form-control form-control-sm @error('sa_signed') is-invalid @enderror"
                         name="sa_signed" id="sa_signed" placeholder="2000-01-01">
@@ -72,7 +71,7 @@
                 </div>
                 <div class="form-group">
                     <label for="sa_signed_local">Subscriber Agreement - Only PDF</label>
-                    <input type="file" class=" form-control form-control-sm" name="sa_signed_local" id="sa_signed_local">
+                    <input type="file" class="form-file form-file-sm" name="sa_signed_local" id="sa_signed_local">
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
@@ -92,9 +91,9 @@
     <!-- @if ($errors->any())
     @foreach ($errors->all() as $error)
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                                                                                {{ $error }}
-                                                                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                                                                            </div>
+                                                                                                        {{ $error }}
+                                                                                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                                                                    </div>
     @endforeach
     @endif-->
 @endsection

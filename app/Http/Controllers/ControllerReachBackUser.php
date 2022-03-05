@@ -54,17 +54,28 @@ class ControllerReachBackUser extends Controller
             'sa_signed' => 'required|string',
             'email' => 'required|email|unique:reach_back_users'
         ]);
-        //dd($request);
+        dd($request);
 
         $this->checkDirectory($request->input('acard'));
-        $path_sa = $request->file('sa_signed_local')->store($request->input('acard'), 'rbu');
-        $path_acard = $request->file('acard_local')->store($request->input('acard_local'), 'rbu');
+        info($request->input('sa_signed_local'));
+        if ($request->input('sa_signed_local')) {
+            $path_sa = $request->file('sa_signed_local')->store($request->input('sa_signed_local'), 'rbu');
+        } else {
+            $path_sa = "";
+        }
+
+        if ($request->input('acard_local')) {
+            $path_acard = $request->file('acard_local')->store($request->input('acard_local'), 'rbu');
+        } else {
+            $path_acard = "";
+        }
+
 
         $rbu = new ReachBackUsers();
         $rbu->fname = $request->input('fname');
         $rbu->lname = $request->input('lname');
         $rbu->acard = $request->input('acard');
-        $rbu->acard = $path_acard;
+        $rbu->acard_local = $path_acard;
         $rbu->acard_validity = $request->input('acard_validity');
         $rbu->network = $request->input('network');
         $rbu->sa_signed = $request->input('sa_signed');
@@ -226,5 +237,23 @@ class ControllerReachBackUser extends Controller
         if (isset($exist)) {
             return Storage::disk("rbu")->deleteDirectory($folder);
         }
+    }
+
+    public function sadelete($id)
+    {
+        $rbu = ReachBackUsers::find($id);
+        //delete the file selected
+        $file = Storage::disk('rbu')->exists($rbu->sa_signed_local);
+        if (isset($file)) {
+            $this->deleteFile($file);
+            $rbu->sa_signed_local = null;
+            $rbu->save();
+        }
+
+        if (!Storage::disk('rbu')->exists($rbu->acard_local)) {
+            $this->deleteFolder($rbu->acard);
+        }
+
+        return redirect("/rbu");
     }
 }
