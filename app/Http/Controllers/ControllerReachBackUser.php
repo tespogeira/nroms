@@ -177,12 +177,25 @@ class ControllerReachBackUser extends Controller
      */
     public function download($id)
     {
+
+        $rbu = ReachBackUsers::find($id);
+        dd($rbu);
+
+        if (isset($rbu)) {
+            return Storage::disk('rbu')->download($rbu->sa_signed_local);
+        }
+    }
+    /**
+     *
+
+    public function download_acard($id)
+    {
         $rbu = ReachBackUsers::find($id);
         //dd($rbu);
         if (isset($rbu)) {
-            return Storage::disk('rbu')->download($rbu->sa_signed_local)->name('file');
+            return Storage::disk('rbu')->download($rbu->acard_local)->name('file');
         }
-    }
+    }*/
 
 
     /**

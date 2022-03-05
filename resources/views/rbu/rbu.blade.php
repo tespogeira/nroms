@@ -36,7 +36,7 @@
                                 <td>{{ $reachbu->acard }}</td>
                                 <td>
                                     @if ($reachbu->acard_validity > \Carbon\Carbon::now())
-                                        <form action="/rbu/{{ $reachbu->id }}/download" method="GET">
+                                        <form action="/rbu/{{ $reachbu->id }}/download/_acard" method="GET">
                                             @csrf
                                             <h6>
                                                 <span
@@ -58,8 +58,9 @@
                                             <h6>
                                                 <span
                                                     class="badge rounded-pill bg-success">{{ $reachbu->sa_signed }}</span>
-                                                <button type="submit"><i class="material-icons"
-                                                        style="font-size:18px;color:black">picture_as_pdf</i></button>
+                                                <button type="submit" class="btn btn-xm"><i class="material-icons"
+                                                        style="font-size:18px;color:black">picture_as_pdf</i>
+                                                </button>
                                             </h6>
                                         @else
                                             <h6>
