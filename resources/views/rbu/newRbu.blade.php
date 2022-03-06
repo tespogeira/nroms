@@ -84,16 +84,16 @@
                     @enderror
                 </div>
                 <button type="submit" class="btn btn-primary btn-sm p-3 mt-2 ">Add</button>
-                <button type="button" class="btn btn-secondary btn-sm p-3 mt-2">Cancel</button>
+                <button type="cancel" class="btn btn-secondary btn-sm p-3 mt-2">Cancel</button>
             </form>
         </div>
     </div>
     <!-- @if ($errors->any())
     @foreach ($errors->all() as $error)
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                                                                                        {{ $error }}
-                                                                                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                                                                                    </div>
+                                                                                                            {{ $error }}
+                                                                                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                                                                        </div>
     @endforeach
     @endif-->
 @endsection

@@ -77,7 +77,8 @@
                 @else
                     <div class="form-group">
                         <label for="sa_signed_local">Subscriber Agreement - Only PDF</label>
-                        <a href="/rbu/{{ $rbu->id }}/sadownload" class="btn btn-secondary btn-sm mt-2">Download</a>
+                        <a href="/rbu/{{ $rbu->id }}/download/{{ $rbu->sa_signed_local }}"
+                            class="btn btn-secondary btn-sm mt-2">Download</a>
                         <a href="/rbu/{{ $rbu->id }}/sadelete" class="btn btn-danger btn-sm mt-2">Delete</a>
                     </div>
                 @endif

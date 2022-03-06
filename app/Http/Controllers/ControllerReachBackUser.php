@@ -44,7 +44,7 @@ class ControllerReachBackUser extends Controller
      */
     public function store(Request $request)
     {
-        //Validate
+        //Validate fields
         $request->validate([
             'fname' => 'required|string',
             'lname' => 'required|string',
@@ -54,22 +54,24 @@ class ControllerReachBackUser extends Controller
             'sa_signed' => 'required|string',
             'email' => 'required|email|unique:reach_back_users'
         ]);
-        dd($request);
 
+        //Create Folder if dosn't exists
         $this->checkDirectory($request->input('acard'));
-        info($request->input('sa_signed_local'));
-        if ($request->input('sa_signed_local')) {
-            $path_sa = $request->file('sa_signed_local')->store($request->input('sa_signed_local'), 'rbu');
+
+        //Save the Files
+        if ($request->file('sa_signed_local')) {
+            $path_sa = $request->file('sa_signed_local')->store($request->input('acard'), 'rbu');
+            $path_sa = explode("/", $path_sa);
+            $path_sa = $path_sa[1];
         } else {
             $path_sa = "";
         }
 
-        if ($request->input('acard_local')) {
-            $path_acard = $request->file('acard_local')->store($request->input('acard_local'), 'rbu');
+        if ($request->file('acard_local')) {
+            $path_acard = $request->file('acard_local')->store($request->input('acard'), 'rbu');
         } else {
             $path_acard = "";
         }
-
 
         $rbu = new ReachBackUsers();
         $rbu->fname = $request->input('fname');
@@ -175,12 +177,17 @@ class ControllerReachBackUser extends Controller
     /**
      *
      */
-    public function download($id, Request $request)
+    public function download($id, $sa_signed_local, Request $request)
     {
         $rbu = ReachBackUsers::find($id);
+        info("local: " . $sa_signed_local);
         //dd($request);
         if (isset($rbu)) {
-            return Storage::disk('rbu')->download($rbu->sa_signed_local, "sa");
+            if ($sa_signed_local == $rbu->sa_signed_local) {
+                return Storage::disk('rbu')->download($rbu->acard . '/' . $rbu->sa_signed_local, "sa");
+            } else {
+                return Storage::disk('rbu')->download($rbu->acard . '/' . $rbu->acard_local, "amis");
+            }
         }
     }
     /**
@@ -203,9 +210,8 @@ class ControllerReachBackUser extends Controller
      */
     private function checkDirectory($acard)
     {
-        $directory = "public/rbu/" . $acard;
-        if (!File::isDirectory($directory)) {
-            return Storage::makeDirectory($directory);
+        if (!File::isDirectory($acard)) {
+            return Storage::disk('rbu')->makeDirectory($acard);
         }
     }
 

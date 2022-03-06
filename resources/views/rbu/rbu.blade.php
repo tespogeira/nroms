@@ -57,7 +57,9 @@
                                                         @else bg-danger @endif
                                                     ">{{ $reachbu->sa_signed }}</span>
                                         @if ($reachbu->sa_signed_local)
-                                            <a href="/rbu/{{ $reachbu->id }}/sadownload"><i class="material-icons"
+                                            <a
+                                                href="/rbu/{{ $reachbu->id }}/download/{{ $reachbu->sa_signed_local }}"><i
+                                                    class="material-icons"
                                                     style="font-size:18px;color:black">picture_as_pdf</i></a>
                                         @endif
                                     </h6>
