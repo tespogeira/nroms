@@ -44,7 +44,9 @@
                                                     @if ($reachbu->acard_validity > \Carbon\Carbon::now()) bg-success @else bg-danger @endif
                                                     ">{{ $reachbu->acard_validity }}</span>
                                             @if ($reachbu->acard_local)
-                                                <i class="material-icons" style="font-size:18px;color:black">badge</i>
+                                                <a href="/rbu/{{ $reachbu->id }}/download/{{ $reachbu->acard_local }}"><i
+                                                        class="material-icons"
+                                                        style="font-size:18px;color:black">badge</i></a>
                                             @endif
                                         </h6>
                                 </td>

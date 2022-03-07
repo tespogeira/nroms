@@ -48,6 +48,10 @@
                         </span>
                     @enderror
                 </div>
+                <div class="form-group">
+                    <label for="acard_local">Amis Card - Only PDF</label>
+                    <input type="file" class="form-control form-control-sm" name="acard_local" id="acard_local">
+                </div>
                 <div class="
                         form-group">
                     <label for="network">Network</label>
@@ -71,7 +75,7 @@
                 </div>
                 <div class="form-group">
                     <label for="sa_signed_local">Subscriber Agreement - Only PDF</label>
-                    <input type="file" class="form-file form-file-sm" name="sa_signed_local" id="sa_signed_local">
+                    <input type="file" class="form-control form-control-sm" name="sa_signed_local" id="sa_signed_local">
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
@@ -91,9 +95,9 @@
     <!-- @if ($errors->any())
     @foreach ($errors->all() as $error)
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                                                                                            {{ $error }}
-                                                                                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                                                                                        </div>
+                                                                                                                                {{ $error }}
+                                                                                                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                                                                                            </div>
     @endforeach
     @endif-->
 @endsection

@@ -69,6 +69,8 @@ class ControllerReachBackUser extends Controller
 
         if ($request->file('acard_local')) {
             $path_acard = $request->file('acard_local')->store($request->input('acard'), 'rbu');
+            $path_acard = explode("/", $path_acard)[1];
+            //$path_acard = $path_acard[1];
         } else {
             $path_acard = "";
         }
@@ -166,8 +168,8 @@ class ControllerReachBackUser extends Controller
         $rbu = ReachBackUsers::find($id);
         //dd($rbu);
         if (isset($rbu)) {
-            $this->deleteFile($rbu->sa_signed_local);
-            $this->deleteFile($rbu->acard_local);
+            $this->deletefile($rbu->id, $rbu->sa_signed_local);
+            $this->deletefile($rbu->id, $rbu->acard_local);
             $this->deleteFolder($rbu->acard);
             $rbu->delete();
         }
@@ -177,30 +179,21 @@ class ControllerReachBackUser extends Controller
     /**
      *
      */
-    public function download($id, $sa_signed_local, Request $request)
+    public function download($id, $file, Request $request)
     {
         $rbu = ReachBackUsers::find($id);
-        info("local: " . $sa_signed_local);
+        info("local: " . $file);
         //dd($request);
         if (isset($rbu)) {
-            if ($sa_signed_local == $rbu->sa_signed_local) {
+            if ($file == $rbu->sa_signed_local) {
                 return Storage::disk('rbu')->download($rbu->acard . '/' . $rbu->sa_signed_local, "sa");
-            } else {
+            } else if ($file == $rbu->acard_local) {
                 return Storage::disk('rbu')->download($rbu->acard . '/' . $rbu->acard_local, "amis");
+            } else {
+                return redirect("/rbu");
             }
         }
     }
-    /**
-     *
-    public function downloadsa($id, Request $request)
-    {
-        //dd($request);
-        $rbu = ReachBackUsers::find($id);
-        if (isset($rbu)) {
-            return Storage::disk('rbu')->download($rbu->sa_signed_local);
-        }
-    }*/
-
 
     /**
      *   Create a specific Directory
@@ -222,11 +215,12 @@ class ControllerReachBackUser extends Controller
      * @return nothing
      */
 
-    private function deleteFile($file)
+    private function deletefile($id, $file)
     {
+        $rbu = ReachBackUsers::find($id);
         $exist = Storage::disk('rbu')->exists($file);
         if (isset($exist)) {
-            return Storage::disk('rbu')->delete($file);
+            return Storage::disk('rbu')->delete($rbu->acard . "/" . $file);
         }
     }
 
@@ -243,23 +237,5 @@ class ControllerReachBackUser extends Controller
         if (isset($exist)) {
             return Storage::disk("rbu")->deleteDirectory($folder);
         }
-    }
-
-    public function sadelete($id)
-    {
-        $rbu = ReachBackUsers::find($id);
-        //delete the file selected
-        $file = Storage::disk('rbu')->exists($rbu->sa_signed_local);
-        if (isset($file)) {
-            $this->deleteFile($file);
-            $rbu->sa_signed_local = null;
-            $rbu->save();
-        }
-
-        if (!Storage::disk('rbu')->exists($rbu->acard_local)) {
-            $this->deleteFolder($rbu->acard);
-        }
-
-        return redirect("/rbu");
     }
 }
