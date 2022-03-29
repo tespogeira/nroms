@@ -7,9 +7,12 @@
                 <a href="{{ '/rbu' }}" class="">
                     <h5 class="card-title">
                         @if (Auth::check())
-                            <span class="position-absolute top start translate-middle badge rounded-pill bg-danger">
-                                {{ $rbu_total }}
-                            </span>
+                            @if ($rbu_total > 0)
+                                <span class="position-absolute top start translate-middle badge rounded-pill bg-danger">
+                                    {{ $rbu_total }}
+                                </span>
+                            @else
+                            @endif
                         @endif
                         <span class="badge bg-primary">RBUs List</span>
                     </h5>
