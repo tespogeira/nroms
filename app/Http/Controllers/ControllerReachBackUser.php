@@ -183,12 +183,18 @@ class ControllerReachBackUser extends Controller
     {
         $rbu = ReachBackUsers::find($id);
         info("local: " . $file);
+        $headers = array(
+            'Content-Type: application/pdf',
+        );
         //dd($request);
         if (isset($rbu)) {
             if ($file == $rbu->sa_signed_local) {
-                return Storage::disk('rbu')->download($rbu->acard . '/' . $rbu->sa_signed_local, "sa");
+                //return Storage::disk('rbu')->download($rbu->acard . '/' . $rbu->sa_signed_local, "sa");
+                $path = Storage::disk('rbu')->path($rbu->acard . '/' . $rbu->sa_signed_local, $headers);
+                $name = "sa";
+                return response()->download($path, $name, $headers);
             } else if ($file == $rbu->acard_local) {
-                return Storage::disk('rbu')->download($rbu->acard . '/' . $rbu->acard_local, "amis");
+                return Storage::disk('rbu')->download($rbu->acard . '/' . $rbu->acard_local, "amis", $headers);
             } else {
                 return redirect("/rbu");
             }
