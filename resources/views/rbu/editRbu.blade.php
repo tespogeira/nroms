@@ -82,10 +82,8 @@
                         <form action="/rbu/{{ $rbu->id }}/deletefile/{{ $rbu->sa_signed_local }}">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger mt-2">Delete</button>
+                            <button type="submit" class="btn btn-sm btn-danger mt-2">Delete</button>
                         </form>
-                        <!--<a href="/rbu/{{ $rbu->id }}/deletefile/{{ $rbu->sa_signed_local }}"
-                                                        class="btn btn-danger btn-sm mt-2">Delete</a>-->
                     </div>
                 @endif
                 <div class="form-group">
