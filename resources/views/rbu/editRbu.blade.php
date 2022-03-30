@@ -45,10 +45,13 @@
                         </span>
                     @enderror
                 </div>
-                <div class="form-group">
-                    <label for="sa_signed_local">Subscriber Agreement - Only PDF</label>
-                    <input type="file" class=" form-control form-control-sm" name="sa_signed_local" id="sa_signed_local">
-                </div>
+                @if (!$rbu->acard_local)
+                    <div class="form-group">
+                        <label for="acard_local">AMIS Card</label>
+                        <input type="file" class=" form-control form-control-sm" name="acard_local" id="acard_local">
+                    </div>
+                @else
+                @endif
                 <div class="form-group">
                     <label for="network">Network</label>
                     <input type="text" class="form-control form-control-sm @error('network') is-invalid @enderror"
@@ -76,7 +79,7 @@
                     </div>
                 @else
                     <div class="form-group">
-                        <label for="sa_signed_local">Subscriber Agreement - Only PDF</label>
+                        <label for="sa_signed_local">Subscriber Agreement</label><br />
                         <a href="/rbu/{{ $rbu->id }}/download/{{ $rbu->sa_signed_local }}"
                             class="btn btn-secondary btn-sm mt-2">Download</a>
                         <form action="/rbu/{{ $rbu->id }}/deletefile/{{ $rbu->sa_signed_local }}">
@@ -84,6 +87,8 @@
                             @method('DELETE')
                             <button type="submit" class="btn btn-sm btn-danger mt-2">Delete</button>
                         </form>
+                        <!--<a href="/rbu/{{ $rbu->id }}/deletefile/{{ $rbu->sa_signed_local }}"
+                                                                                                                    class="btn btn-danger btn-sm mt-2">Delete</a>-->
                     </div>
                 @endif
                 <div class="form-group">
