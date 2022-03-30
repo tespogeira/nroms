@@ -8,7 +8,7 @@
                     <h5 class="card-title">
                         @if (Auth::check())
                             @if ($rbu_total > 0)
-                                <span class="position-absolute top start translate-middle badge rounded-pill bg-danger">
+                                <span class="position-absolute top start translate-middle badge rounded-pill bg-success">
                                     {{ $rbu_total }}
                                 </span>
                             @else
