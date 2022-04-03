@@ -51,6 +51,16 @@
                         <input type="file" class=" form-control form-control-sm" name="acard_local" id="acard_local">
                     </div>
                 @else
+                    <div class="form-group">
+                        <label for="acard_local">Amis Card</label><br />
+                        <a href="/rbu/{{ $rbu->id }}/download/{{ $rbu->acard_local }}"
+                            class="btn btn-secondary btn-sm mt-2">Download</a>
+                        <form action="/rbu/{{ $rbu->id }}/deletefile/{{ $rbu->acard_local }}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger mt-2">Delete</button>
+                        </form>
+                    </div>
                 @endif
                 <div class="form-group">
                     <label for="network">Network</label>
@@ -74,7 +84,7 @@
                 </div>
                 @if (!$rbu->sa_signed_local)
                     <div class="form-group">
-                        <label for="sa_signed_local">Subscriber Agreement - Only PDF</label>
+                        <label for="sa_signed_local">Subscriber Agreement (PDF)</label>
                         <input type="file" class="form-control form-control-sm" name="sa_signed_local" id="sa_signed_local">
                     </div>
                 @else
@@ -88,7 +98,7 @@
                             <button type="submit" class="btn btn-sm btn-danger mt-2">Delete</button>
                         </form>
                         <!--<a href="/rbu/{{ $rbu->id }}/deletefile/{{ $rbu->sa_signed_local }}"
-                                                                                                                    class="btn btn-danger btn-sm mt-2">Delete</a>-->
+                                    class="btn btn-danger btn-sm mt-2">Delete</a>-->
                     </div>
                 @endif
                 <div class="form-group">
